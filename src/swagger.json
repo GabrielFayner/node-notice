@@ -1,0 +1,364 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Teste da API",
+    "description": "Esse teste tem objetivo de testar as rotas da API",   
+    "contact": {
+      "email": "gabrielfayner10@gmail.com"
+    },
+    "version":"1.0.0"
+  },
+  "servers" : [
+    {
+      "url": "http://localhost:3333",
+      "description": "Endpoint para teste local"
+    },
+    {
+      "url": "https://backend-plathanus.herokuapp.com/",
+      "description": "Endpoint para teste em produção"
+    }
+  ],
+  "paths": {
+    "/author" : {
+      "post": {
+        "summary": "Cadastro de autor",
+        "description": "Essa é uma rota para cadastrar autor",
+        "tags": ["Author"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Author"
+              },
+              "examples": {
+                "author" : {
+                  "value": {
+                    "name": "Gabriel o pensador"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "O cadastro do novo author falhou!"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema":{
+                  "type": "object",
+                  "$ref": "#/components/schemas/Author"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Busca autores",
+        "description": "Busca de autores cadastrados",
+        "tags": ["Author"],       
+        "responses": {
+          "400": {
+            "description": "Não foi possivel retornar o autor"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema":{
+                  "type": "object",
+                  "$ref": "#/components/schemas/Author"
+                }
+              }
+            }
+          }
+        }
+      }       
+    }, 
+    "/author/{id}" : {
+      "get": {
+        "summary": "Busca autor",
+        "description": "Busca de autor pelo id",
+        "tags": ["Author"],   
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Nome do autor pelo id",
+            "required": true
+          }
+        ],   
+        "responses": {
+          "400": {
+            "description": "Não foi possivel retornar o author"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema":{
+                  "type": "object",
+                  "$ref": "#/components/schemas/Author"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza autor",
+        "description": "Atualiza do autor pelo id",
+        "tags": ["Author"],   
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Atualiza autor pelo id",
+            "required": true
+          }
+        ],   
+        "responses": {
+          "400": {
+            "description": "Não foi possivel retornar o author"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema":{
+                  "type": "object",
+                  "$ref": "#/components/schemas/Author"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta autor",
+        "description": "Deleta autor pelo id",
+        "tags": ["Author"],   
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Deleta autor pelo id",
+            "required": true
+          }
+        ],   
+        "responses": {
+          "400": {
+            "description": "Não foi possivel deletar o author"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema":{
+                  "type": "object",
+                  "$ref": "#/components/schemas/Author"
+                }
+              }
+            }
+          }
+        }
+      }         
+    },
+    "/notice" : {
+      "post": {
+        "summary": "Cadastro de noticia",
+        "description": "Essa é uma rota para cadastrar noticia",
+        "tags": ["Notice"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Notice"
+              },
+              "examples": {
+                "notice" : {
+                  "value": {
+                    "title":"Maria",
+                    "post": "A maria é feia",
+                    "author": "61815b05d8945de65af308ab"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "O cadastro de uma nova noticia falhou!"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema":{
+                  "type": "object",
+                  "$ref": "#/components/schemas/Notice"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Busca de noticias",
+        "description": "Busca de noticias",
+        "tags": ["Notice"],       
+        "responses": {
+          "400": {
+            "description": "Não foi possivel retornar o noticia"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema":{
+                  "type": "object",
+                  "$ref": "#/components/schemas/Notice"
+                }
+              }
+            }
+          }
+        }
+      }       
+    }, 
+    "/notice/{id}" : {
+      "get": {
+        "summary": "Busca noticia",
+        "description": "Busca de autor pelo id",
+        "tags": ["Notice"],   
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Nome do autor pelo id",
+            "required": true
+          }
+        ],   
+        "responses": {
+          "400": {
+            "description": "Não foi possivel retornar o author"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema":{
+                  "type": "object",
+                  "$ref": "#/components/schemas/Notice"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza a noticia",
+        "description": "Atualiza a noticia pelo id",
+        "tags": ["Notice"],   
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Atualiza a noticia pelo id",
+            "required": true
+          }
+        ],   
+        "responses": {
+          "400": {
+            "description": "Não foi possivel retornar a noticia"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema":{
+                  "type": "object",
+                  "$ref": "#/components/schemas/Notice"
+                },
+                "examples": {
+                  "notice" : {
+                    "value": {
+                      "title":"Maria",
+                      "post": "A maria é feia",
+                      "author": "61815b05d8945de65af308ab"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta a noticia",
+        "description": "Deleta a noticia pelo id",
+        "tags": ["Notice"],   
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Deleta a noticia pelo id",
+            "required": true
+          }
+        ],   
+        "responses": {
+          "400": {
+            "description": "Não foi possivel deletar a noticia"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema":{
+                  "type": "object",
+                  "$ref": "#/components/schemas/Notice"
+                }
+              }
+            }
+          }
+        }
+      }         
+    }
+  },
+  "components":{
+    "schemas": {
+      "Author": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          }
+        }    
+      },     
+      "Notice": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "post": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          }
+        }
+      }      
+    }
+  }
+}
